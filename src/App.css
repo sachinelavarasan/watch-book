@@ -32,3 +32,12 @@
     transform: rotate(360deg);
   }
 }
+
+.app-main-container {
+  display: flex;
+}
+
+.components {
+  margin-left: 1rem;
+  width: 90%;
+}
