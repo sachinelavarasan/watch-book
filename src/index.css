@@ -13,3 +13,17 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.App {
+  height: 100vh;
+}
+
+.app-main-container {
+  display: flex;
+  height: 100%;
+}
+
+.components {
+  margin-left: 1rem;
+  width: 90%;
+}
