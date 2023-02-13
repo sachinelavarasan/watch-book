@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 
 export const NavbarContainer = styled.div`
   padding: 10px 0px;
-  background-color: black;
+  background-color: white;
   align-items: center;
-  box-shadow: 3px 3px 5px #888888;
+  box-shadow: 1px 1px 2px #888888;
   border-radius: 0 20px 20px 0;
   .logo-link {
     width: 100%;
