@@ -3,11 +3,11 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import { NavLink } from 'react-router-dom';
 
-import { AiOutlineDashboard } from 'react-icons/ai';
+import { TbLayoutDashboard } from 'react-icons/tb';
 import { TbListDetails } from 'react-icons/tb';
 import { HiOutlineUserGroup } from 'react-icons/hi2';
-import { CiViewTimeline } from 'react-icons/ci';
-import { BsCalendarMinus } from 'react-icons/bs';
+import { BsFileEarmarkSpreadsheet } from 'react-icons/bs';
+import { SlCalender } from 'react-icons/sl';
 
 import { NavbarContainer } from './elements';
 import Icon from './components/Icon';
@@ -25,11 +25,7 @@ function Navbar() {
           </NavLink>
         </ListItem>
         <ListItem className="icon">
-          <Icon
-            route="/dashboard"
-            iconComponent={<AiOutlineDashboard />}
-            toolTipTitle="Dashboard"
-          />
+          <Icon route="/dashboard" iconComponent={<TbLayoutDashboard />} toolTipTitle="Dashboard" />
         </ListItem>
         <ListItem className="icon">
           <Icon route="/details" iconComponent={<TbListDetails />} toolTipTitle="Details" />
@@ -38,10 +34,14 @@ function Navbar() {
           <Icon route="/login" iconComponent={<HiOutlineUserGroup />} toolTipTitle="Employees" />
         </ListItem>
         <ListItem className="icon">
-          <Icon route="/timelogs" iconComponent={<CiViewTimeline />} toolTipTitle="Time log" />
+          <Icon
+            route="/timelogs"
+            iconComponent={<BsFileEarmarkSpreadsheet />}
+            toolTipTitle="Time log"
+          />
         </ListItem>{' '}
         <ListItem className="icon">
-          <Icon route="/leave" iconComponent={<BsCalendarMinus />} toolTipTitle="Leave" />
+          <Icon route="/leave" iconComponent={<SlCalender />} toolTipTitle="Leave" />
         </ListItem>
       </List>
     </NavbarContainer>
