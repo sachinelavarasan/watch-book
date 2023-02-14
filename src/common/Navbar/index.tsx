@@ -31,7 +31,11 @@ function Navbar() {
           <Icon route="/details" iconComponent={<TbListDetails />} toolTipTitle="Details" />
         </ListItem>
         <ListItem className="icon">
-          <Icon route="/login" iconComponent={<HiOutlineUserGroup />} toolTipTitle="Employees" />
+          <Icon
+            route="/employees"
+            iconComponent={<HiOutlineUserGroup />}
+            toolTipTitle="Employees"
+          />
         </ListItem>
         <ListItem className="icon">
           <Icon

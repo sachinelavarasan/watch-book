@@ -10,6 +10,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Navbar from './common/Navbar';
+import { LoginRoute, PrivateRoute } from './privateRoute';
 
 function Routers() {
   // const { value } = useAppSelector((state: RootState) => state.counter);
@@ -22,9 +23,47 @@ function Routers() {
           <div className="components">
             <Routes>
               <Route path="/" element={<Login />} />
-              <Route path="dashboard" element={<SignUp />} />
-              <Route path="login" element={<Login />} />
               <Route path="signup" element={<SignUp />} />
+              <Route
+                path="/dashboard"
+                element={
+                  <PrivateRoute>
+                    <h1>Dashboard</h1>
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/details"
+                element={
+                  <PrivateRoute>
+                    <h1>details</h1>
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/employees"
+                element={
+                  <PrivateRoute>
+                    <h1>employees</h1>
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/timelogs"
+                element={
+                  <PrivateRoute>
+                    <h1>Timelog</h1>
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/leave"
+                element={
+                  <PrivateRoute>
+                    <h1>leave</h1>
+                  </PrivateRoute>
+                }
+              />
             </Routes>
           </div>
         </div>
