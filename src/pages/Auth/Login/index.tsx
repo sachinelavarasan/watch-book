@@ -30,7 +30,7 @@ export const Login = () => {
     if (isValid) {
       dispatch(
         logIn(e, () => {
-          navigate('/dashboard');
+          navigate('/admin');
         }),
       );
     }
