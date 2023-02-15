@@ -35,7 +35,7 @@ export const PrivateRoute = ({ children }: any) => {
 
 export const LoginRoute = ({ children }: any) => {
   if (isAuthenticated()) {
-    return <Navigate to="/signup" replace />;
+    return <Navigate to="/admin" replace />;
   }
   return children;
 };
