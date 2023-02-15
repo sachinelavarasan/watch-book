@@ -29,6 +29,8 @@ export const { clearUser, setError, setIsLoading, setUser } = authSlice.actions;
 
 export const logIn = (data: any, callback: Function) => async (dispatch: any) => {
   try {
+    dispatch(setIsLoading(true));
+
     const response = await authApi.logIn({
       email: data.email,
       password: data.password,
