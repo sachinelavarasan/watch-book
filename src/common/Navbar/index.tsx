@@ -17,7 +17,7 @@ function Navbar() {
     <NavbarContainer>
       <List>
         <ListItem className="logo-container">
-          <NavLink to="/" className="logo-link">
+          <NavLink to="/admin" className="logo-link">
             <div className="watch-book">
               <span className="watch">W</span>
               <span className="book">B</span>
@@ -25,27 +25,27 @@ function Navbar() {
           </NavLink>
         </ListItem>
         <ListItem className="icon">
-          <Icon route="/dashboard" iconComponent={<TbLayoutDashboard />} toolTipTitle="Dashboard" />
+          <Icon route="/admin" iconComponent={<TbLayoutDashboard />} toolTipTitle="Dashboard" />
         </ListItem>
         <ListItem className="icon">
-          <Icon route="/details" iconComponent={<TbListDetails />} toolTipTitle="Details" />
+          <Icon route="/admin/details" iconComponent={<TbListDetails />} toolTipTitle="Details" />
         </ListItem>
         <ListItem className="icon">
           <Icon
-            route="/employees"
+            route="/admin/employees"
             iconComponent={<HiOutlineUserGroup />}
             toolTipTitle="Employees"
           />
         </ListItem>
         <ListItem className="icon">
           <Icon
-            route="/timelogs"
+            route="/admin/timelogs"
             iconComponent={<BsFileEarmarkSpreadsheet />}
             toolTipTitle="Time log"
           />
         </ListItem>{' '}
         <ListItem className="icon">
-          <Icon route="/leave" iconComponent={<SlCalender />} toolTipTitle="Leave" />
+          <Icon route="/admin/leave" iconComponent={<SlCalender />} toolTipTitle="Leave" />
         </ListItem>
       </List>
     </NavbarContainer>

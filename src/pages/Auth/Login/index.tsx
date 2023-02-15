@@ -3,13 +3,13 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import LoadingButton from '@mui/lab/LoadingButton';
 
-import { loginSchema } from '../../utils/validation';
-import { TextInput } from '../../common/TextInput';
-import { useAppDispatch, useAppSelector } from '../../redux/store';
-import { logIn } from '../../redux/slices/authSlice';
+import { loginSchema } from '../../../utils/validation';
+import { TextInput } from '../../../common/TextInput';
+import { useAppDispatch, useAppSelector } from '../../../redux/store';
+import { logIn } from '../../../redux/slices/authSlice';
 import { useNavigate } from 'react-router-dom';
 
-function Login() {
+export const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { isLoading } = useAppSelector((state) => state.auth);
@@ -85,6 +85,4 @@ function Login() {
       </div>
     </div>
   );
-}
-
-export default Login;
+};

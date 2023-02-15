@@ -48,6 +48,7 @@ export const logIn = (data: any, callback: Function) => async (dispatch: any) =>
     }
   } catch (error: any) {
     dispatch(setError(error?.response?.data?.message || 'Something went wrong.'));
+    console.log(error);
   } finally {
     dispatch(setIsLoading(false));
   }

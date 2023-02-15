@@ -3,10 +3,10 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import LoadingButton from '@mui/lab/LoadingButton';
 
-import { signUpSchema } from '../../utils/validation';
-import { TextInput } from '../../common/TextInput';
+import { signUpSchema } from '../../../utils/validation';
+import { TextInput } from '../../../common/TextInput';
 
-function SignUp() {
+export const SignUp = () => {
   const {
     handleSubmit,
     control,
@@ -123,6 +123,4 @@ function SignUp() {
       </div>
     </div>
   );
-}
-
-export default SignUp;
+};
