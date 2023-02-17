@@ -10,7 +10,7 @@ import { BsFileEarmarkSpreadsheet } from 'react-icons/bs';
 import { SlCalender } from 'react-icons/sl';
 
 import { NavbarContainer } from './elements';
-import Icon from './components/Icon';
+import { Icon, ProfileDropdown } from './components';
 
 function Navbar() {
   return (
@@ -48,6 +48,7 @@ function Navbar() {
           <Icon route="/admin/leave" iconComponent={<SlCalender />} toolTipTitle="Leave" />
         </ListItem>
       </List>
+      <ProfileDropdown />
     </NavbarContainer>
   );
 }

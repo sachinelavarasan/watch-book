@@ -2,18 +2,24 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import LoadingButton from '@mui/lab/LoadingButton';
+import { Snackbar } from '@mui/material';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
 
 import { loginSchema } from '../../../utils/validation';
 import { TextInput } from '../../../common/TextInput';
 import { useAppDispatch, useAppSelector } from '../../../redux/store';
-import { logIn } from '../../../redux/slices/authSlice';
+import { logIn, setError } from '../../../redux/slices/authSlice';
 import { useNavigate } from 'react-router-dom';
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { isLoading } = useAppSelector((state) => state.auth);
-
+  const { isLoading, error } = useAppSelector((state) => state.auth);
+  console.log(!!error);
   const {
     handleSubmit,
     control,
@@ -82,6 +88,11 @@ export const Login = () => {
             <p className="m-0 capitalize font-semibold">Login</p>
           </LoadingButton>
         </div>
+        <Snackbar open={!!error} autoHideDuration={3000} onClose={() => dispatch(setError(null))}>
+          <Alert onClose={() => dispatch(setError(null))} severity="error" sx={{ width: '100%' }}>
+            {error}
+          </Alert>
+        </Snackbar>
       </div>
     </div>
   );
