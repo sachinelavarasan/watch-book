@@ -22,7 +22,9 @@ export const AdminRoutes = () => {
               path="/details"
               element={
                 <>
-                  <h1>details</h1>
+                  <div>
+                    <h1>DETAILS</h1>
+                  </div>
                 </>
               }
             />

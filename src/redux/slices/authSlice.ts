@@ -37,7 +37,6 @@ export const logIn = (data: any, callback: Function) => async (dispatch: any) =>
     });
 
     const { jwtToken, user } = response.data;
-    console.log(response.data);
     dispatch(setUser(user));
 
     if (user) {
@@ -49,8 +48,7 @@ export const logIn = (data: any, callback: Function) => async (dispatch: any) =>
       }
     }
   } catch (error: any) {
-    dispatch(setError(error?.response?.data?.message || 'Something went wrong.'));
-    console.log(error);
+    dispatch(setError(error?.response?.data?.error || 'Something went wrong.'));
   } finally {
     dispatch(setIsLoading(false));
   }
