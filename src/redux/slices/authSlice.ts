@@ -2,12 +2,19 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import * as authApi from '../../api/auth';
 
+interface authState {
+  error: null;
+  isLoading: boolean;
+  user: any;
+}
+const initialState: authState = {
+  error: null,
+  isLoading: false,
+  user: null,
+};
+
 const authSlice = createSlice({
-  initialState: {
-    error: null,
-    isLoading: false,
-    user: null,
-  },
+  initialState,
   name: 'auth',
   reducers: {
     clearUser(state) {
@@ -63,7 +70,7 @@ export const register = (data: any, callback: Function) => async (dispatch: any)
       callback();
     }
   } catch (error: any) {
-    dispatch(setError(error?.response?.data?.message || 'Something went wrong.'));
+    dispatch(setError(error?.response?.data?.error || 'Something went wrong.'));
   } finally {
     dispatch(setIsLoading(false));
   }
@@ -78,7 +85,7 @@ export const logout = (callBack: Function) => (dispatch: any) => {
   }
 };
 
-export const fetchProfile = (callback: Function) => async (dispatch: any) => {
+export const fetchProfile = (callback?: Function) => async (dispatch: any) => {
   dispatch(setIsLoading(true));
   try {
     const response = await authApi.fetchProfile();
@@ -93,7 +100,9 @@ export const fetchProfile = (callback: Function) => async (dispatch: any) => {
       }
     }
   } catch (error: any) {
-    dispatch(logout(callback));
+    if (callback) {
+      dispatch(logout(callback));
+    }
     dispatch(setError(error?.response?.data?.message || 'Something went wrong.'));
   } finally {
     dispatch(setIsLoading(false));

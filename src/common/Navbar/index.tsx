@@ -11,8 +11,19 @@ import { SlCalender } from 'react-icons/sl';
 
 import { NavbarContainer } from './elements';
 import { Icon, ProfileDropdown } from './components';
+import { useAppDispatch } from '../../redux/store';
+import { fetchProfile } from '../../redux/slices/authSlice';
 
 function Navbar() {
+  const dispatch = useAppDispatch();
+  const token = localStorage.getItem('jwtToken');
+
+  React.useEffect(() => {
+    const token = localStorage.getItem('jwtToken');
+    if (token) {
+      dispatch(fetchProfile());
+    }
+  }, [token, dispatch]);
   return (
     <NavbarContainer>
       <List>
