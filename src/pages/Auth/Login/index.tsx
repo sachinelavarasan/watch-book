@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { Snackbar } from '@mui/material';
+import { Link, Snackbar } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 
 import { loginSchema } from '../../../utils/validation';
@@ -19,7 +19,6 @@ export const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { isLoading, error } = useAppSelector((state) => state.auth);
-  console.log(!!error);
   const {
     handleSubmit,
     control,
@@ -87,6 +86,11 @@ export const Login = () => {
             disabled={!isValid}>
             <p className="m-0 capitalize font-semibold">Login</p>
           </LoadingButton>
+        </div>
+        <div className="mt-3 flex justify-center font-semibold text-sm">
+          <Link href="/signup" underline="hover" className="hover:bg-slate-200 p-1 rounded">
+            Register
+          </Link>
         </div>
         <Snackbar open={!!error} autoHideDuration={3000} onClose={() => dispatch(setError(null))}>
           <Alert onClose={() => dispatch(setError(null))} severity="error" sx={{ width: '100%' }}>

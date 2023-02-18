@@ -10,12 +10,13 @@ import IconButton from '@mui/material/IconButton';
 import { IoLogOutOutline } from 'react-icons/io5';
 import { CgProfile } from 'react-icons/cg';
 import { logout } from '../../../../redux/slices/authSlice';
-import { useAppDispatch } from '../../../../redux/store';
+import { useAppDispatch, useAppSelector } from '../../../../redux/store';
 import { useNavigate } from 'react-router-dom';
 
 export const ProfileDropdown = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { user } = useAppSelector((state) => state.auth);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -82,6 +83,10 @@ export const ProfileDropdown = () => {
         }}
         transformOrigin={{ horizontal: 'left', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}>
+        <MenuItem onClick={handleClose} className="font-bold">
+          {user?.oga_name}
+        </MenuItem>
+        <Divider />
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <CgProfile size="1.4rem" color="#272727" />

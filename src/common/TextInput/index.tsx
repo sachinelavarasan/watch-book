@@ -38,7 +38,7 @@ export const TextInput = ({
         type={!showPassword && isPassword ? 'password' : 'text'}
         error={error}
         inputProps={{
-          style: { padding: '10px', fontSize: '12px' },
+          style: { padding: '10px', fontSize: '12px', backgroundColor: 'transparent' },
         }}
         endAdornment={
           isPassword ? (
