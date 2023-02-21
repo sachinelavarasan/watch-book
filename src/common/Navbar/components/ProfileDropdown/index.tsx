@@ -12,10 +12,14 @@ import { CgProfile } from 'react-icons/cg';
 import { logout } from '../../../../redux/slices/authSlice';
 import { useAppDispatch, useAppSelector } from '../../../../redux/store';
 import { useNavigate } from 'react-router-dom';
+import { ProfileModal } from '../ProfileModal';
 
 export const ProfileDropdown = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [openModal, setOpenModal] = React.useState(false);
+  const modalOpen = () => setOpenModal(true);
+  const modalClose = () => setOpenModal(false);
   const { user } = useAppSelector((state) => state.auth);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -87,7 +91,7 @@ export const ProfileDropdown = () => {
           {user?.oga_name}
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={modalOpen}>
           <ListItemIcon>
             <CgProfile size="1.4rem" color="#272727" />
           </ListItemIcon>
@@ -101,6 +105,7 @@ export const ProfileDropdown = () => {
           Logout
         </MenuItem>
       </Menu>
+      <ProfileModal open={openModal} modalClose={modalClose} data={user} />
     </React.Fragment>
   );
 };
