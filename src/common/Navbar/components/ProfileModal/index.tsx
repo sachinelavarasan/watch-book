@@ -5,7 +5,6 @@ import { ProfileModalContainer, ProfileModalFooterContainer } from './elements/i
 import Divider from '@mui/material/Divider';
 import { Avatar } from '@mui/material';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -13,6 +12,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
+import { Controller, useForm } from 'react-hook-form';
+import { TextInput } from '../../../TextInput';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { signUpSchema } from '../../../../utils/validation';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -24,9 +27,50 @@ const Transition = React.forwardRef(function Transition(
 });
 
 export const ProfileModal = ({ open, modalClose, data }: any) => {
-  console.log('haiii', open, data);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
+
+  const {
+    control,
+    setValue,
+    reset,
+    getValues,
+    formState: { errors, isDirty },
+  } = useForm({
+    resolver: yupResolver(signUpSchema),
+    defaultValues: {
+      orgName: '',
+      name: '',
+      orgAddress: '',
+      email: '',
+      phone: '',
+    },
+  });
+
+  React.useEffect(() => {
+    if (data) {
+      console.log('first');
+      setValue('email', data?.oga_email);
+      setValue('name', data?.oga_name);
+      setValue('orgName', data?.organisation?.org_name);
+      setValue('orgAddress', data?.organisation?.org_address);
+      reset(
+        {
+          ...getValues(),
+        },
+        {
+          keepDirty: false,
+        },
+      );
+    }
+  }, [data]);
+
+  // const onSubmit = (e: any) => {
+  //   if (isValid) {
+  //     console.log(e);
+  //   }
+  // };
+  console.log(isDirty, 'nkjnjkjk');
   return (
     <>
       <Dialog
@@ -46,95 +90,92 @@ export const ProfileModal = ({ open, modalClose, data }: any) => {
             <Divider />
             <DialogContent className="dialog-content">
               <div>
-                <h3>Logined User Details</h3>
-                <div className="mt-5">
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    type="text"
-                    fullWidth
-                    label="User Name"
-                    variant="outlined"
-                    defaultValue={data?.oga_name}
-                    InputProps={{
-                      readOnly: true,
-                    }}
+                <h3 className="m-0">User Details</h3>
+                <div className="mt-4">
+                  <Controller
+                    control={control}
+                    render={({ field }) => (
+                      <TextInput
+                        {...field}
+                        label="Email"
+                        id="outlined-adornment-email"
+                        errorMessage={errors.email?.message}
+                        error={!!errors.email}
+                        placeholder="Email"
+                      />
+                    )}
+                    name="email"
                   />
                 </div>
                 <div className="mt-4">
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    type="email"
-                    fullWidth
-                    label="User Email"
-                    variant="outlined"
-                    defaultValue={data?.oga_email}
-                    InputProps={{
-                      readOnly: true,
-                    }}
+                  <Controller
+                    control={control}
+                    render={({ field }) => (
+                      <TextInput
+                        {...field}
+                        label="Name"
+                        id="outlined-adornment-fullname"
+                        errorMessage={errors.name?.message}
+                        error={!!errors.name}
+                        placeholder="Name"
+                      />
+                    )}
+                    name="name"
                   />
                 </div>
               </div>
               <div className="mt-5">
-                <h3>Organization Details</h3>
-                <div className="mt-5">
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    type="text"
-                    fullWidth
-                    label="Organaisation Name"
-                    variant="outlined"
-                    defaultValue={data?.organisation?.org_name}
-                    InputProps={{
-                      readOnly: true,
-                    }}
+                <h3 className="m-0">Organization Details</h3>
+                <div className="mt-4">
+                  <Controller
+                    control={control}
+                    render={({ field }) => (
+                      <TextInput
+                        {...field}
+                        label="Organisation"
+                        id="outlined-adornment-fullname"
+                        errorMessage={errors.orgName?.message}
+                        error={!!errors.orgName}
+                        placeholder="Organisation name"
+                      />
+                    )}
+                    name="orgName"
                   />
                 </div>
                 <div className="mt-4">
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    type="email"
-                    fullWidth
-                    label="Organaisation Email"
-                    variant="outlined"
-                    defaultValue="firstorg@org.com"
-                    InputProps={{
-                      readOnly: true,
-                    }}
+                  <Controller
+                    control={control}
+                    render={({ field }) => (
+                      <TextInput
+                        {...field}
+                        label="Phone Number"
+                        id="outlined-adornment-fullname"
+                        errorMessage={errors.phone?.message}
+                        error={!!errors.phone}
+                        placeholder="Phone number"
+                      />
+                    )}
+                    name="phone"
                   />
                 </div>
+
                 <div className="mt-4">
-                  <TextField
-                    margin="dense"
-                    id="outlined-multiline-static"
-                    label="Phone Number "
-                    // type="number"
-                    type="text"
-                    fullWidth
-                    InputProps={{
-                      readOnly: true,
-                      inputMode: 'numeric',
-                      // pattern: '[0-9]*',
-                    }}
-                    defaultValue="0241 498409"
-                  />
-                </div>
-                <div className="mt-4">
-                  <TextField
-                    margin="dense"
-                    id="outlined-multiline-static"
-                    label="Organisation Address"
-                    multiline
-                    fullWidth
-                    rows={3}
-                    defaultValue={`No 7/10 , Sanfransico,  ${data?.organisation?.org_address}`}
+                  <Controller
+                    control={control}
+                    render={({ field }) => (
+                      <TextInput
+                        {...field}
+                        label="Organisation Address"
+                        id="outlined-adornment-fullname"
+                        errorMessage={errors.orgAddress?.message}
+                        error={!!errors.orgAddress}
+                        placeholder="Organisation Address"
+                        multiline
+                        rows={3}
+                        style={{ padding: '0px' }}
+                      />
+                    )}
+                    name="orgAddress"
                   />
                 </div>
               </div>
@@ -150,7 +191,7 @@ export const ProfileModal = ({ open, modalClose, data }: any) => {
             <Button
               onClick={modalClose}
               variant="contained"
-              // disableds
+              disabled={!isDirty}
               sx={{ backgroundColor: '#475be8', color: 'white' }}>
               Update
             </Button>
