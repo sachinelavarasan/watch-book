@@ -109,6 +109,25 @@ export const fetchProfile = (callback?: Function) => async (dispatch: any) => {
   }
 };
 
+export const editProfile = (data: any, callback: Function) => async (dispatch: any) => {
+  dispatch(setIsLoading(true));
+
+  try {
+    const response = await authApi.editProfile(data);
+
+    const { user } = response.data;
+
+    dispatch(setUser(user));
+    if (callback) {
+      callback();
+    }
+  } catch (error: any) {
+    dispatch(setError(error?.response?.data?.error || 'Something went wrong.'));
+  } finally {
+    dispatch(setIsLoading(false));
+  }
+};
+
 export const authSelector = (state: { auth: any }) => state.auth;
 
 export const authReducer = authSlice.reducer;

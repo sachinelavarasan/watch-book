@@ -5,6 +5,7 @@ import { ProfileModalContainer, ProfileModalFooterContainer } from './elements/i
 import Divider from '@mui/material/Divider';
 import { Avatar } from '@mui/material';
 import Button from '@mui/material/Button';
+import LoadingButton from '@mui/lab/LoadingButton';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -15,7 +16,9 @@ import { TransitionProps } from '@mui/material/transitions';
 import { Controller, useForm } from 'react-hook-form';
 import { TextInput } from '../../../TextInput';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { signUpSchema } from '../../../../utils/validation';
+import { editProfileSchema } from '../../../../utils/validation';
+import { editProfile } from '../../../../redux/slices/authSlice';
+import { useAppDispatch } from '../../../../redux/store';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -26,7 +29,8 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export const ProfileModal = ({ open, modalClose, data }: any) => {
+export const ProfileModal = ({ open, modalClose, data, isLoading }: any) => {
+  const dispatch = useAppDispatch();
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -35,25 +39,29 @@ export const ProfileModal = ({ open, modalClose, data }: any) => {
     setValue,
     reset,
     getValues,
-    formState: { errors, isDirty },
+    handleSubmit,
+    formState: { errors, isDirty, isValid },
   } = useForm({
-    resolver: yupResolver(signUpSchema),
+    resolver: yupResolver(editProfileSchema),
     defaultValues: {
       orgName: '',
       name: '',
       orgAddress: '',
       email: '',
       phone: '',
+      orgAdminId: '',
+      orgId: '',
     },
   });
 
   React.useEffect(() => {
     if (data) {
-      console.log('first');
       setValue('email', data?.oga_email);
       setValue('name', data?.oga_name);
       setValue('orgName', data?.organisation?.org_name);
       setValue('orgAddress', data?.organisation?.org_address);
+      setValue('orgId', data?.organisation?.org_id);
+      setValue('orgAdminId', data?.oga_id);
       reset(
         {
           ...getValues(),
@@ -65,12 +73,15 @@ export const ProfileModal = ({ open, modalClose, data }: any) => {
     }
   }, [data]);
 
-  // const onSubmit = (e: any) => {
-  //   if (isValid) {
-  //     console.log(e);
-  //   }
-  // };
-  console.log(isDirty, 'nkjnjkjk');
+  const onSubmit = (e: object) => {
+    if (isValid) {
+      dispatch(
+        editProfile(e, () => {
+          modalClose();
+        }),
+      );
+    }
+  };
   return (
     <>
       <Dialog
@@ -188,13 +199,14 @@ export const ProfileModal = ({ open, modalClose, data }: any) => {
             <Button onClick={modalClose} variant="outlined">
               Close
             </Button>
-            <Button
-              onClick={modalClose}
+            <LoadingButton
+              onClick={handleSubmit(onSubmit)}
               variant="contained"
               disabled={!isDirty}
+              loading={isLoading}
               sx={{ backgroundColor: '#475be8', color: 'white' }}>
               Update
-            </Button>
+            </LoadingButton>
           </DialogActions>
         </ProfileModalFooterContainer>
       </Dialog>
