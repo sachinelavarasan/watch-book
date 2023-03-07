@@ -20,7 +20,7 @@ export const ProfileDropdown = () => {
   const [openModal, setOpenModal] = React.useState(false);
   const modalOpen = () => setOpenModal(!openModal);
   const modalClose = () => setOpenModal(!openModal);
-  const { user } = useAppSelector((state) => state.auth);
+  const { user, isLoading } = useAppSelector((state) => state.auth);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -105,7 +105,9 @@ export const ProfileDropdown = () => {
           Logout
         </MenuItem>
       </Menu>
-      {openModal ? <ProfileModal open={openModal} modalClose={modalClose} data={user} /> : null}
+      {openModal ? (
+        <ProfileModal open={openModal} modalClose={modalClose} data={user} isLoading={isLoading} />
+      ) : null}
     </React.Fragment>
   );
 };
