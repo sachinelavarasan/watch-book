@@ -46,4 +46,11 @@ export const NavbarContainer = styled.div`
     align-items: center;
     justify-content: center;
   }
+  .logo {
+    max-width: 3rem;
+  }
+  .watch-book-logo {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
 `;

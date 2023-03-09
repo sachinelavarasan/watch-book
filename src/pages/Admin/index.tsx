@@ -19,11 +19,11 @@ export const AdminRoutes = () => {
               }
             />
             <Route
-              path="/details"
+              path="/projects"
               element={
                 <>
                   <div>
-                    <h1>DETAILS</h1>
+                    <h1>PROJECTS</h1>
                   </div>
                 </>
               }
