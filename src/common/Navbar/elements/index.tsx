@@ -2,13 +2,16 @@ import styled from '@emotion/styled';
 
 export const NavbarContainer = styled.div`
   padding: 10px 0px;
-  background-color: white;
+  background-color: #9000b9;
   align-items: center;
-  border-radius: 0 12px 12px 0;
-  border: 1px solid #cacaca;
+  border-radius: 0 5px 5px 0;
+  border-right: 1px solid #fafafa;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 100vh;
+  position: fixed;
+  overflow-x: hidden;
   .logo-link {
     width: 100%;
     text-decoration: none;

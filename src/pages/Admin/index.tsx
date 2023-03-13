@@ -1,59 +1,52 @@
 /* eslint-disable no-unused-vars */
 import '../../App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from '../../common/Navbar';
+import { Dashboard } from './pages';
 
 export const AdminRoutes = () => {
   return (
-    <div className="App">
-      <div className="app-main-container">
-        <Navbar />
-        <div className="components">
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <h1>Dashboard</h1>
-                </>
-              }
-            />
-            <Route
-              path="/details"
-              element={
-                <>
-                  <div>
-                    <h1>DETAILS</h1>
-                  </div>
-                </>
-              }
-            />
-            <Route
-              path="/employees"
-              element={
-                <>
-                  <h1>employees</h1>
-                </>
-              }
-            />
-            <Route
-              path="/timelogs"
-              element={
-                <>
-                  <h1>Timelog</h1>
-                </>
-              }
-            />
-            <Route
-              path="/leave"
-              element={
-                <>
-                  <h1>leave</h1>
-                </>
-              }
-            />
-          </Routes>
-        </div>
+    <div className="app-main-container">
+      <Navbar />
+
+      <div className="component">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route
+            path="/details"
+            element={
+              <>
+                <div>
+                  <h1>DETAILS</h1>
+                </div>
+              </>
+            }
+          />
+          <Route
+            path="/employees"
+            element={
+              <>
+                <h1>employees</h1>
+              </>
+            }
+          />
+          <Route
+            path="/timelogs"
+            element={
+              <>
+                <h1>Timelog</h1>
+              </>
+            }
+          />
+          <Route
+            path="/leave"
+            element={
+              <>
+                <h1>leave</h1>
+              </>
+            }
+          />
+        </Routes>
       </div>
     </div>
   );
