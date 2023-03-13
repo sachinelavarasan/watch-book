@@ -9,6 +9,8 @@ import { HiOutlineUserGroup } from 'react-icons/hi2';
 import { BsFileEarmarkSpreadsheet } from 'react-icons/bs';
 import { SlCalender } from 'react-icons/sl';
 
+import WatchBookLogo from '../../assets/watchbook_logo.svg';
+
 import { NavbarContainer } from './elements';
 import { Icon, ProfileDropdown } from './components';
 import { useAppDispatch } from '../../redux/store';
@@ -27,11 +29,10 @@ function Navbar() {
   return (
     <NavbarContainer>
       <List>
-        <ListItem className="logo-container">
+        <ListItem className="logo-container watch-book-logo">
           <NavLink to="/admin" className="logo-link">
             <div className="watch-book">
-              <span className="watch">W</span>
-              <span className="book">B</span>
+              <img src={WatchBookLogo} alt="WB" className="logo" />
             </div>
           </NavLink>
         </ListItem>
@@ -39,7 +40,7 @@ function Navbar() {
           <Icon route="/admin" iconComponent={<TbLayoutDashboard />} toolTipTitle="Dashboard" />
         </ListItem>
         <ListItem className="icon">
-          <Icon route="/admin/details" iconComponent={<TbListDetails />} toolTipTitle="Details" />
+          <Icon route="/admin/projects" iconComponent={<TbListDetails />} toolTipTitle="Projects" />
         </ListItem>
         <ListItem className="icon">
           <Icon
