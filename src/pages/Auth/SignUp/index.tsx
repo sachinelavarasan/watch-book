@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import LoadingButton from '@mui/lab/LoadingButton';
+// import LoadingButton from '@mui/lab/LoadingButton';
 
 import { useAppDispatch, useAppSelector } from '../../../redux/store';
 import { register, setError } from '../../../redux/slices/authSlice';
@@ -10,6 +10,7 @@ import { TextInput } from '../../../common/TextInput';
 import { Link, Snackbar } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { useNavigate } from 'react-router-dom';
+import Button from '../../../common/Button';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -152,12 +153,29 @@ export const SignUp = () => {
           </div>
         </div>
         <div className="mt-5 flex justify-center">
-          <LoadingButton loading={isLoading} variant="contained" onClick={handleSubmit(onSubmit)}>
+          {/* <LoadingButton
+            loading={isLoading}
+            variant="contained"
+            onClick={handleSubmit(onSubmit)}
+            sx={{ backgroundColor: '#9000db', color: 'white' }}>
             <p className="m-0 capitalize font-semibold">Register</p>
-          </LoadingButton>
+          </LoadingButton> */}
+          <Button
+            isLoading={isLoading}
+            variant="contained"
+            onClick={handleSubmit(onSubmit)}
+            isDisabled={!isValid}
+            label="Register"
+            labelStyle={{ color: 'white' }}
+            style={{ backgroundColor: '#9000b9', color: 'white' }}
+          />
         </div>
         <div className="mt-3 flex justify-center font-semibold text-sm">
-          <Link href="/" underline="hover" className="hover:bg-slate-200 p-1 rounded">
+          <Link
+            href="/"
+            underline="hover"
+            className="hover:bg-slate-200 p-1 rounded"
+            sx={{ color: '#9000b9' }}>
             Login
           </Link>
         </div>
