@@ -4,7 +4,6 @@ import { useTheme } from '@mui/material/styles';
 import { ProfileModalContainer, ProfileModalFooterContainer } from './elements/index';
 import Divider from '@mui/material/Divider';
 import { Avatar } from '@mui/material';
-import Button from '@mui/material/Button';
 import LoadingButton from '@mui/lab/LoadingButton';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -15,10 +14,12 @@ import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import { Controller, useForm } from 'react-hook-form';
 import { TextInput } from '../../../TextInput';
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import { editProfileSchema } from '../../../../utils/validation';
 import { editProfile } from '../../../../redux/slices/authSlice';
 import { useAppDispatch } from '../../../../redux/store';
+import Button from '../../../Button';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -53,6 +54,7 @@ export const ProfileModal = ({ open, modalClose, data, isLoading }: any) => {
       orgId: '',
     },
   });
+  console.log(isDirty);
 
   React.useEffect(() => {
     if (data) {
@@ -196,17 +198,35 @@ export const ProfileModal = ({ open, modalClose, data, isLoading }: any) => {
         <Divider />
         <ProfileModalFooterContainer>
           <DialogActions className="footer" sx={{ height: '80px' }}>
-            <Button onClick={modalClose} variant="outlined">
+            {/* <Button onClick={modalClose} variant="outlined">
               Close
-            </Button>
+            // </Button> */}
+            <Button
+              label="Close"
+              size="small"
+              variant="outlined"
+              onClick={modalClose}
+              style={{ color: '#9000B9', borderColor: '#9000B9' }}
+            />
             <LoadingButton
               onClick={handleSubmit(onSubmit)}
               variant="contained"
               disabled={!isDirty}
               loading={isLoading}
-              sx={{ backgroundColor: '#475be8', color: 'white' }}>
+              size="small"
+              sx={{ backgroundColor: '#9000db', color: 'white' }}>
               Update
             </LoadingButton>
+            {/* <Button
+              style={{ backgroundColor: '#9000B9' }}
+              labelStyle={{ color: 'white' }}
+              label="Update"
+              size="small"
+              isDisabled={!isDirty}
+              variant="contained"
+              isLoading={isLoading}
+              onClick={handleSubmit(onSubmit)}
+            /> */}
           </DialogActions>
         </ProfileModalFooterContainer>
       </Dialog>

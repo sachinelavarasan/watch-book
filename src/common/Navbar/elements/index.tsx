@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
 export const NavbarContainer = styled.div`
-  padding: 10px 0px;
   background-color: #9000b9;
   align-items: center;
   border-radius: 0 5px 5px 0;

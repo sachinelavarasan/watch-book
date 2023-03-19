@@ -2,6 +2,9 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import { FiEdit } from 'react-icons/fi';
+import { RiDeleteBin6Line } from 'react-icons/ri';
+
 import Empty from '../../../../common/Empty';
 import SkeletonLoader from '../../../../common/SkeletonLoader';
 import Table from '../../../../common/Table';
@@ -12,6 +15,9 @@ import { DashboardContainer } from './elements';
 import CloseIcon from '../../../../assets/close-modal.svg';
 import { TextInput } from '../../../../common/TextInput';
 import { addEmployeeSchema } from '../../../../utils/validation';
+import MoreOption from '../../../../common/MoreOption';
+import DropdownOption from '../../../../common/MoreOption/component/DropdownOption';
+import { Status } from '../../../../common/Status';
 
 export const Dashboard = () => {
   const [open, setOpen] = React.useState(false);
@@ -42,50 +48,128 @@ export const Dashboard = () => {
       {
         col1: 'Hello',
         col2: 'World',
+        col3: <Status statusValue={1} statusLabel="Active" />,
+        col4: (
+          <MoreOption>
+            <DropdownOption
+              label="Edit"
+              onClick={() => {
+                alert('hello');
+              }}
+              startIcon={<FiEdit color="#ffffff" className="dropdown-icon" />}
+            />
+            <DropdownOption
+              label="Delete"
+              onClick={() => {
+                alert('hello');
+              }}
+              isDelete={true}
+              startIcon={<RiDeleteBin6Line color="#fc3434" className="dropdown-icon" />}
+            />
+          </MoreOption>
+        ),
       },
       {
         col1: 'react-table',
         col2: 'rocks',
+        col3: <Status statusValue={3} statusLabel="Pending" />,
+        col4: (
+          <MoreOption>
+            <DropdownOption
+              label="Edit"
+              onClick={() => {
+                alert('hello');
+              }}
+              startIcon={<FiEdit color="#ffffff" className="dropdown-icon" />}
+            />
+            <DropdownOption
+              label="Delete"
+              onClick={() => {
+                alert('hello');
+              }}
+              isDelete={true}
+              startIcon={<RiDeleteBin6Line color="#fc3434" className="dropdown-icon" />}
+            />
+          </MoreOption>
+        ),
       },
       {
         col1: 'whatever',
         col2: 'you want',
+        col3: <Status statusValue={2} statusLabel="Inactive" />,
+        col4: (
+          <MoreOption>
+            <DropdownOption
+              label="Edit"
+              onClick={() => {
+                alert('hello');
+              }}
+              startIcon={<FiEdit color="#ffffff" className="dropdown-icon" />}
+            />
+            <DropdownOption
+              label="Delete"
+              onClick={() => {
+                alert('hello');
+              }}
+              isDelete={true}
+              startIcon={<RiDeleteBin6Line color="#fc3434" className="dropdown-icon" />}
+            />
+          </MoreOption>
+        ),
       },
       {
         col1: 'Hello',
         col2: 'World',
+        col3: <Status statusValue={1} statusLabel="Active" />,
+        col4: '',
       },
       {
         col1: 'react-table',
         col2: 'rocks',
+        col3: <Status statusValue={2} statusLabel="Inactive" />,
+        col4: '',
       },
       {
         col1: 'whatever',
         col2: 'you want',
+        col3: <Status statusValue={3} statusLabel="Pending" />,
+        col4: '',
       },
       {
         col1: 'Hello',
         col2: 'World',
+        col3: <Status statusValue={1} statusLabel="Active" />,
+        col4: '',
       },
       {
         col1: 'react-table',
         col2: 'rocks',
+        col3: <Status statusValue={2} statusLabel="Inactive" />,
+        col4: '',
       },
       {
         col1: 'whatever',
         col2: 'you want',
+        col3: <Status statusValue={3} statusLabel="Pending" />,
+        col4: '',
       },
       {
         col1: 'Hello',
         col2: 'World',
+        col3: <Status statusValue={1} statusLabel="Active" />,
+        col4: '',
       },
       {
         col1: 'react-table',
         col2: 'rocks',
+        col3: <Status statusValue={2} statusLabel="Inactive" />,
+        col4: '',
       },
       {
         col1: 'whatever',
         col2: 'you want',
+        col3: <Status statusValue={3} statusLabel="Pending" />,
+        col4: '',
       },
     ],
     [],
@@ -100,6 +184,14 @@ export const Dashboard = () => {
       {
         Header: 'Column 2',
         accessor: 'col2',
+      },
+      {
+        Header: 'Status',
+        accessor: 'col3',
+      },
+      {
+        Header: '',
+        accessor: 'col4',
       },
     ],
     [],
@@ -182,13 +274,13 @@ export const Dashboard = () => {
                 size="small"
                 variant="outlined"
                 onClick={handleOpen}
-                style={{ color: '#9000B9', borderColor: '#9000B9', textTransform: 'Capitalize' }}
+                style={{ color: '#9000B9', borderColor: '#9000B9' }}
               />
             </div>
 
             <div className="ml-2">
               <Button
-                style={{ backgroundColor: '#9000B9', textTransform: 'Capitalize' }}
+                style={{ backgroundColor: '#9000B9' }}
                 labelStyle={{ color: 'white' }}
                 label="Add Employee"
                 size="small"

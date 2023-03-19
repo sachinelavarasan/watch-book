@@ -31,6 +31,7 @@ const Button = ({
   isLoading,
   labelStyle,
 }: ButtonProps) => {
+  console.log(isDisabled);
   return (
     <LoadingButton
       loading={isLoading}
@@ -43,7 +44,7 @@ const Button = ({
       startIcon={startIcon}
       style={style}
       endIcon={endIcon}>
-      <span style={labelStyle}>{label}</span>
+      <span style={{ ...labelStyle, textTransform: 'Capitalize' }}>{label}</span>
     </LoadingButton>
   );
 };
