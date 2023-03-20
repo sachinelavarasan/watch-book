@@ -1,5 +1,6 @@
 import React from 'react';
 import Empty from '../../../../common/Empty';
+import { SelectField } from '../../../../common/Select';
 import SkeletonLoader from '../../../../common/SkeletonLoader';
 import Table from '../../../../common/Table';
 import { DashboardContainer } from './elements';
@@ -72,9 +73,23 @@ export const Dashboard = () => {
     ],
     [],
   );
+  let arr = [
+    { label: 'hj', value: 'dd' },
+    { label: 'hj', value: 'dd' },
+    { label: 'hj', value: 'dd' },
+  ];
   return (
     <DashboardContainer>
       <h1>DashBoard</h1>
+      <SelectField
+        id="select"
+        label="Select"
+        options={arr}
+        autoWidth={false}
+        multiple={false}
+        native={false}
+        placeholder="select"
+      />
       <Table columns={columns} data={data} />
       <Empty
         title="No Employees Found !"
