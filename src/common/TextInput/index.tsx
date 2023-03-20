@@ -9,13 +9,15 @@ interface InputProps {
   error: boolean;
   errorMessage: string | undefined;
   isPassword?: boolean;
+
+  borderColor?: string | undefined;
 }
 
 type InputFieldProps = InputProps & OutlinedInputProps;
 type InputRef = HTMLInputElement;
 
 export const TextInput = forwardRef<InputRef, InputFieldProps>(
-  ({ id, label, error, isPassword = false, errorMessage, ...props }, ref) => {
+  ({ id, label, error, isPassword = false, errorMessage, borderColor, ...props }, ref) => {
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -34,8 +36,17 @@ export const TextInput = forwardRef<InputRef, InputFieldProps>(
           fullWidth
           type={!showPassword && isPassword ? 'password' : 'text'}
           error={error}
+          sx={{
+            fieldSet: {
+              borderColor: borderColor ? borderColor : '#9000db',
+            },
+          }}
           inputProps={{
-            style: { padding: '10px', fontSize: '12px', backgroundColor: 'transparent' },
+            style: {
+              padding: '10px',
+              fontSize: '12px',
+              backgroundColor: 'transparent',
+            },
           }}
           endAdornment={
             isPassword ? (

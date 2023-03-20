@@ -26,3 +26,8 @@ export const editProfileSchema = yup.object({
   orgAddress: yup.string(),
   // phone: yup.string().matches(phoneRegExp, 'Phone number is not valid'),
 });
+
+export const addEmployeeSchema = yup.object({
+  name: yup.string().required('Name is required'),
+  email: yup.string().email().required('Email Id is required'),
+});

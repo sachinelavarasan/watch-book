@@ -5,4 +5,8 @@ export const DashboardContainer = styled.div`
   h1 {
     margin: 0;
   }
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
 `;
