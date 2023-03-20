@@ -6,6 +6,7 @@ import { FiEdit } from 'react-icons/fi';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 
 import Empty from '../../../../common/Empty';
+import { SelectField } from '../../../../common/Select';
 import SkeletonLoader from '../../../../common/SkeletonLoader';
 import Table from '../../../../common/Table';
 import Modal from '../../../../common/Modal';
@@ -196,9 +197,22 @@ export const Dashboard = () => {
     ],
     [],
   );
+  let arr = [
+    { label: 'hj', value: 'dd' },
+    { label: 'hj', value: 'dd' },
+    { label: 'hj', value: 'dd' },
+  ];
   return (
     <DashboardContainer>
       <h1>DashBoard</h1>
+      <SelectField
+        id="select"
+        label="Select"
+        options={arr}
+        autoWidth={false}
+        multiple={false}
+        native={false}
+        placeholder="select"
       <Button
         style={{ backgroundColor: '#9000B9' }}
         labelStyle={{ color: 'white', textTransform: 'Capitalize' }}
