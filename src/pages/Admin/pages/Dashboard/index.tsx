@@ -213,6 +213,7 @@ export const Dashboard = () => {
         multiple={false}
         native={false}
         placeholder="select"
+      />
       <Button
         style={{ backgroundColor: '#9000B9' }}
         labelStyle={{ color: 'white', textTransform: 'Capitalize' }}
