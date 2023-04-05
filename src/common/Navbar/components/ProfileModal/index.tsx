@@ -50,20 +50,20 @@ export const ProfileModal = ({ open, modalClose, data, isLoading }: any) => {
       orgAddress: '',
       email: '',
       phone: '',
-      orgAdminId: '',
+      userId: '',
       orgId: '',
     },
   });
-  console.log(isDirty);
 
   React.useEffect(() => {
     if (data) {
-      setValue('email', data?.oga_email);
-      setValue('name', data?.oga_name);
-      setValue('orgName', data?.organisation?.org_name);
-      setValue('orgAddress', data?.organisation?.org_address);
-      setValue('orgId', data?.organisation?.org_id);
-      setValue('orgAdminId', data?.oga_id);
+      setValue('email', data?.us_email);
+      setValue('name', data?.us_name);
+      setValue('orgName', data?.org_name);
+      setValue('orgAddress', data?.org_address);
+      setValue('phone', data?.org_phone_no);
+      setValue('orgId', data?.org_id);
+      setValue('userId', data?.us_id);
       reset(
         {
           ...getValues(),
