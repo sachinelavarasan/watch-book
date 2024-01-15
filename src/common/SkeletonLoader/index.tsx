@@ -9,7 +9,7 @@ function SkeletonLoader({ height, width }: { height: string; width: string }) {
       height={height}
       width={width}
       style={{ marginBottom: 6 }}
-      sx={{ bgcolor: '#ece8e8d2' }}
+      sx={{ bgcolor: '#e6e0ea' }}
     />
   );
 }
