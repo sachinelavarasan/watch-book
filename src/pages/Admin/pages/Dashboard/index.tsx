@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -19,8 +19,12 @@ import { addEmployeeSchema } from '../../../../utils/validation';
 import MoreOption from '../../../../common/MoreOption';
 import DropdownOption from '../../../../common/MoreOption/component/DropdownOption';
 import { Status } from '../../../../common/Status';
+import { useAppDispatch, useAppSelector } from '../../../../redux/store';
+import { getEmployees } from '../../../../redux/slices/employeesSlice';
 
 export const Dashboard = () => {
+  const { employees, isLoading } = useAppSelector((state) => state.employees);
+  const dispatch = useAppDispatch();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(!open);
   const {
@@ -34,6 +38,11 @@ export const Dashboard = () => {
       email: '',
     },
   });
+
+  useEffect(() => {
+    dispatch(getEmployees('ss', () => {}));
+  }, []);
+
   const onSubmit = (data: any) => {
     console.log(data, isValid);
     // if (isValid) {
@@ -44,159 +53,63 @@ export const Dashboard = () => {
     //   );
     // }
   };
-  const data = React.useMemo(
-    () => [
-      {
-        col1: 'Hello',
-        col2: 'World',
-        col3: <Status statusValue={1} statusLabel="Active" />,
-        col4: (
-          <MoreOption>
-            <DropdownOption
-              label="Edit"
-              onClick={() => {
-                alert('hello');
-              }}
-              startIcon={<FiEdit color="#ffffff" className="dropdown-icon" />}
-            />
-            <DropdownOption
-              label="Delete"
-              onClick={() => {
-                alert('hello');
-              }}
-              isDelete={true}
-              startIcon={<RiDeleteBin6Line color="#fc3434" className="dropdown-icon" />}
-            />
-          </MoreOption>
-        ),
-      },
-      {
-        col1: 'react-table',
-        col2: 'rocks',
-        col3: <Status statusValue={3} statusLabel="Pending" />,
-        col4: (
-          <MoreOption>
-            <DropdownOption
-              label="Edit"
-              onClick={() => {
-                alert('hello');
-              }}
-              startIcon={<FiEdit color="#ffffff" className="dropdown-icon" />}
-            />
-            <DropdownOption
-              label="Delete"
-              onClick={() => {
-                alert('hello');
-              }}
-              isDelete={true}
-              startIcon={<RiDeleteBin6Line color="#fc3434" className="dropdown-icon" />}
-            />
-          </MoreOption>
-        ),
-      },
-      {
-        col1: 'whatever',
-        col2: 'you want',
-        col3: <Status statusValue={2} statusLabel="Inactive" />,
-        col4: (
-          <MoreOption>
-            <DropdownOption
-              label="Edit"
-              onClick={() => {
-                alert('hello');
-              }}
-              startIcon={<FiEdit color="#ffffff" className="dropdown-icon" />}
-            />
-            <DropdownOption
-              label="Delete"
-              onClick={() => {
-                alert('hello');
-              }}
-              isDelete={true}
-              startIcon={<RiDeleteBin6Line color="#fc3434" className="dropdown-icon" />}
-            />
-          </MoreOption>
-        ),
-      },
-      {
-        col1: 'Hello',
-        col2: 'World',
-        col3: <Status statusValue={1} statusLabel="Active" />,
-        col4: '',
-      },
-      {
-        col1: 'react-table',
-        col2: 'rocks',
-        col3: <Status statusValue={2} statusLabel="Inactive" />,
-        col4: '',
-      },
-      {
-        col1: 'whatever',
-        col2: 'you want',
-        col3: <Status statusValue={3} statusLabel="Pending" />,
-        col4: '',
-      },
-      {
-        col1: 'Hello',
-        col2: 'World',
-        col3: <Status statusValue={1} statusLabel="Active" />,
-        col4: '',
-      },
-      {
-        col1: 'react-table',
-        col2: 'rocks',
-        col3: <Status statusValue={2} statusLabel="Inactive" />,
-        col4: '',
-      },
-      {
-        col1: 'whatever',
-        col2: 'you want',
-        col3: <Status statusValue={3} statusLabel="Pending" />,
-        col4: '',
-      },
-      {
-        col1: 'Hello',
-        col2: 'World',
-        col3: <Status statusValue={1} statusLabel="Active" />,
-        col4: '',
-      },
-      {
-        col1: 'react-table',
-        col2: 'rocks',
-        col3: <Status statusValue={2} statusLabel="Inactive" />,
-        col4: '',
-      },
-      {
-        col1: 'whatever',
-        col2: 'you want',
-        col3: <Status statusValue={3} statusLabel="Pending" />,
-        col4: '',
-      },
-    ],
-    [],
-  );
 
   const columns: any = React.useMemo(
     () => [
       {
-        Header: 'Column 1',
-        accessor: 'col1', // accessor is the "key" in the data
+        Header: 'Id',
+        accessor: 'id', // accessor is the "key" in the data
       },
       {
-        Header: 'Column 2',
-        accessor: 'col2',
+        Header: 'Name',
+        Cell: (originalRow: { row: { original: any } }, index: number) =>
+          `${originalRow.row.original?.firstName || ''} ${
+            originalRow.row.original?.lastName || ''
+          }`,
+        accessor: 'firstName',
       },
       {
+        Header: 'Email',
+        accessor: 'email',
+      },
+      {
+        Header: 'Date of Birth',
+        accessor: 'dob',
+      },
+      {
+        id: 'status',
         Header: 'Status',
-        accessor: 'col3',
+        Cell: <Status statusValue={2} statusLabel="Inactive" />,
+        accessor: 'dob',
       },
       {
-        Header: '',
-        accessor: 'col4',
+        id: 'more-option',
+        Header: 'Status',
+        Cell: () => (
+          <MoreOption>
+            <DropdownOption
+              label="Edit"
+              onClick={() => {
+                alert('hello');
+              }}
+              startIcon={<FiEdit color="#ffffff" className="dropdown-icon" />}
+            />
+            <DropdownOption
+              label="Delete"
+              onClick={() => {
+                alert('hello');
+              }}
+              isDelete={true}
+              startIcon={<RiDeleteBin6Line color="#fc3434" className="dropdown-icon" />}
+            />
+          </MoreOption>
+        ),
+        accessor: 'dob',
       },
     ],
-    [],
+    [employees],
   );
+
   let arr = [
     { label: 'hj', value: 'dd' },
     { label: 'hj', value: 'dd' },
@@ -223,12 +136,14 @@ export const Dashboard = () => {
         isLoading={false}
         onClick={handleOpen}
       />
-      <Table columns={columns} data={data} />
-      <Empty
-        title="No Employees Found !"
-        subtitle="Looks likes there are no employees are added in your organisation"
-      />
-      <SkeletonLoader height="350px" width="100%" />
+      {employees.length && !isLoading && <Table columns={columns} data={employees} />}
+      {!employees.length && !isLoading && (
+        <Empty
+          title="No Employees Found !"
+          subtitle="Looks likes there are no employees are added in your organisation"
+        />
+      )}
+      {isLoading && <SkeletonLoader height="700px" width="100%" />}
       <Modal isVisible={open} onClose={handleOpen} className="w-2/3 sm:w-3/5 md:w-2/5">
         <div>
           <div className="flex justify-between align-center p-4">
