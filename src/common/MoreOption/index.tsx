@@ -10,7 +10,6 @@ import { MenuContainer, DropdownContainer } from './elements';
 const ITEM_HEIGHT = 48;
 
 const MoreOption = ({ children }: any) => {
-  console.log('hai');
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {

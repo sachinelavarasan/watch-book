@@ -2,7 +2,7 @@
 import '../../App.css';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from '../../common/Navbar';
-import { Dashboard } from './pages';
+import { Dashboard, Employees } from './pages';
 
 export const AdminRoutes = () => {
   return (
@@ -22,14 +22,7 @@ export const AdminRoutes = () => {
               </>
             }
           />
-          <Route
-            path="/employees"
-            element={
-              <>
-                <h1>employees</h1>
-              </>
-            }
-          />
+          <Route path="/employees" element={<Employees />} />
           <Route
             path="/timelogs"
             element={

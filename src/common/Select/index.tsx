@@ -9,17 +9,18 @@ import { SelectInputProps } from '@mui/material/Select/SelectInput';
 const SelectContainer = styled.div`
   fieldset {
     border-color: #8a8686 !important;
-    border-width: 2px !important;
+    border-width: 0.0625rem !important;
   }
   .MuiOutlinedInput-input {
-    padding: 10px 20px;
+    padding: 0.375rem 1rem;
   }
   .select {
-    border-radius: 6px;
+    border-radius: 0.25rem;
+    width: 100%;
   }
   .error {
     border-color: red !important;
-    border-width: 2px !important;
+    border-width: 0.0625rem !important;
   }
 `;
 
@@ -30,22 +31,30 @@ interface SelectProps {
   errorMessage?: string | undefined;
   options: any;
   placeholder: string;
+  flexType?: string;
+  isLabel?: boolean;
 }
 
 type selectFieldProps = SelectProps & SelectInputProps;
 type SelectRef = HTMLSelectElement;
 
 export const SelectField = React.forwardRef<SelectRef, selectFieldProps>(
-  ({ id, label, error, errorMessage, options, placeholder, ...props }, ref) => {
+  ({ id, label, error, errorMessage, options, placeholder, flexType, isLabel, ...props }, ref) => {
     return (
       <SelectContainer>
-        <Box sx={{ minWidth: 120, display: 'flex', flexDirection: 'column', position: 'relative' }}>
-          <label
-            htmlFor="outlined-adornment-password"
-            className="self-start mb-1 font-semibold text-sm ">
-            {label}
-          </label>
-          {/* <FormControl sx={{ minWidth: 120 }} error={error}> */}
+        <Box
+          sx={{
+            minWidth: '14rem',
+            display: 'flex',
+            flexDirection: flexType ? flexType : 'column',
+            position: 'relative',
+            alignItems: 'center',
+          }}>
+          {isLabel ? (
+            <label htmlFor="outlined-adornment-password" className="mb-1 font-semibold text-sm ">
+              {label}
+            </label>
+          ) : null}
           <Select
             labelId="demo-simple-select-label"
             ref={ref}
@@ -66,7 +75,6 @@ export const SelectField = React.forwardRef<SelectRef, selectFieldProps>(
               );
             })}
           </Select>
-          {/* </FormControl> */}
           {error ? (
             <p className="m-0 text-red-700 text-[10px] absolute -bottom-3 ">{errorMessage}</p>
           ) : null}
