@@ -31,7 +31,6 @@ const Button = ({
   isLoading,
   labelStyle,
 }: ButtonProps) => {
-  console.log(isDisabled);
   return (
     <LoadingButton
       loading={isLoading}

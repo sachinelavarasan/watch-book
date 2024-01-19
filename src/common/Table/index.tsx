@@ -63,7 +63,7 @@ function Tables({ columns = [], data = [] }: any) {
       </table>
       <div className="pagination">
         <div>
-          <span>
+          <span className="page-text">
             Page{' '}
             <strong>
               {pageIndex + 1} of {pageOptions.length}
@@ -76,6 +76,7 @@ function Tables({ columns = [], data = [] }: any) {
               labelId="demo-select-small"
               id="demo-select-small"
               value={pageSize}
+              className="page-count-select"
               onChange={(e) => {
                 setPageSize(Number(e.target.value));
               }}>
@@ -86,7 +87,10 @@ function Tables({ columns = [], data = [] }: any) {
               ))}
             </Select>
           </FormControl>
-          <button className="page-prev" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+          <button
+            className="page-prev ml-4"
+            onClick={() => gotoPage(0)}
+            disabled={!canPreviousPage}>
             {'<<'}
           </button>{' '}
           <button className="page-prev" onClick={() => previousPage()} disabled={!canPreviousPage}>

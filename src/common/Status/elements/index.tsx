@@ -6,8 +6,8 @@ export const StatusContainer = styled.div`
   .status-1,
   .status-2,
   .status-3 {
-    width: 0.875rem;
-    height: 0.875rem;
+    width: 0.5rem;
+    height: 0.5rem;
     border-radius: 50%;
   }
   .status-1 {
@@ -21,7 +21,7 @@ export const StatusContainer = styled.div`
   }
   .label {
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 0.75rem;
     color: #000000;
     margin-left: 0.5rem;
   }
