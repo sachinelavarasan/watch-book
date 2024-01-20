@@ -1,10 +1,11 @@
-import React from 'react';
+import { NavLink, useMatch, useResolvedPath } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import { IconContext } from 'react-icons';
-import { NavLink } from 'react-router-dom';
 import { IconContainer } from './elements';
 
-export const Icon = ({ route, iconComponent, toolTipTitle }: any) => {
+export const Icon = ({ route, activeIcon, inActiveIcon, toolTipTitle }: any) => {
+  let resolved = useResolvedPath(route);
+  let match = useMatch({ path: resolved.pathname, end: true });
   return (
     <IconContainer>
       <NavLink to={route} end className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
@@ -12,10 +13,10 @@ export const Icon = ({ route, iconComponent, toolTipTitle }: any) => {
           <div className="icon-container">
             <IconContext.Provider
               value={{
-                size: '1.3rem',
+                size: '1.7rem',
                 className: 'activeState',
               }}>
-              {iconComponent}
+              {match ? activeIcon : inActiveIcon}
             </IconContext.Provider>
           </div>
         </Tooltip>

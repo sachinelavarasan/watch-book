@@ -21,16 +21,16 @@ code {
   width: 100%;
   height: 100%;
   display: flex;
-  background-color: #eaeaea;
+  background-color: #390b24;
 }
 
 .app-main-container {
   display: flex;
   width: 100%;
-  background-color: #eaeaea;
 }
 
 .component {
   width: 100%;
-  padding: 1rem 1rem 4rem 5rem;
+  padding: 0rem 2rem 2rem 5rem;
+  min-height: 100vh;
 }

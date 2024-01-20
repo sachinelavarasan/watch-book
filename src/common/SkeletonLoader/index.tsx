@@ -1,16 +1,13 @@
 import React from 'react';
 
 import { Skeleton } from '@mui/lab';
+import { Grid, SkeletonProps } from '@mui/material';
 
-function SkeletonLoader({ height, width }: { height: string; width: string }) {
+function SkeletonLoader(props: SkeletonProps) {
   return (
-    <Skeleton
-      animation="wave"
-      height={height}
-      width={width}
-      style={{ marginBottom: 6 }}
-      sx={{ bgcolor: '#e6e0ea' }}
-    />
+    <Grid container>
+      <Skeleton variant="rectangular" width="100%" height={200} {...props} />
+    </Grid>
   );
 }
 

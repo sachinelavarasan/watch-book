@@ -9,7 +9,7 @@ export const Status = ({ statusValue, statusLabel }: StatusProps) => {
   return (
     <StatusContainer>
       <div className={`status-${statusValue}`} />
-      <div className="label">{statusLabel}</div>
+      <div className={`label-${statusValue} ml-2`}>{statusLabel}</div>
     </StatusContainer>
   );
 };

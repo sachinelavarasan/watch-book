@@ -32,10 +32,12 @@ export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
       },
       {
         Header: 'Name',
-        Cell: (originalRow: { row: { original: any } }, index: number) =>
-          `${originalRow.row.original?.firstName || ''} ${
-            originalRow.row.original?.lastName || ''
-          }`,
+        Cell: (originalRow: { row: { original: any } }, index: number) => (
+          <>
+            {originalRow.row.original?.firstName || ''}
+            {originalRow.row.original?.lastName || ''}
+          </>
+        ),
         accessor: 'firstName',
       },
       {
@@ -49,8 +51,10 @@ export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
       {
         id: 'status',
         Header: 'Status',
-        Cell: <Status statusValue={2} statusLabel="Inactive" />,
-        accessor: 'dob',
+        Cell: (originalRow: { row: { original: any } }, index: number) => (
+          <Status statusValue={originalRow.row.original?.status} statusLabel="Inactive" />
+        ),
+        accessor: 'status',
       },
       {
         id: 'more-option',
@@ -114,7 +118,7 @@ export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
         </div>
 
         {employees.length && !isLoading && <Table columns={columns} data={employees} />}
-        {isLoading && <SkeletonLoader height="700px" width="100%" />}
+        {isLoading && <SkeletonLoader height={400} />}
         {!employees.length && !isLoading && (
           <Empty
             title="No Employees Found !"

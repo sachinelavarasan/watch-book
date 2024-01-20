@@ -6,33 +6,35 @@ export const TableContainer = styled.div`
     border-collapse: separate;
     border-spacing: 0 0.5rem;
     thead > tr {
-      outline: #9000b9 solid 0.0625rem;
+      outline: #2e1220 solid 0.0625rem;
       border-radius: 0.25rem;
       box-shadow: 0rem 0rem 0.1875rem 0.125rem rgba(0, 0, 0, 0.25);
-      background-color: #ffffff;
+      background-color: #2e1220;
     }
     th {
-      color: black;
-      font-size: 0.75rem;
-      font-weight: bold;
+      color: #ffffff;
+      font-size: 0.875rem;
+      font-weight: 600;
       text-align: left;
-      padding: 0.5rem 1.5rem;
+      padding: 0.65rem 1.5rem;
     }
     td {
       font-size: 0.75rem;
       padding: 0.375rem 1.5rem;
+      color: #f3f3f3;
     }
 
     tbody > tr {
-      outline: #d9d8d8 solid 0.0625rem;
+      outline: #1f0b16 solid 0.0625rem;
       border-radius: 0.1875rem;
       box-shadow: 0rem 0rem 0.125rem 0.0625rem rgba(0, 0, 0, 0.15);
-      background-color: #ffffff;
+      background-color: #1f0b16;
     }
   }
   .pagination {
-    background-color: #ffffff;
+    background-color: #2e1220;
     border-radius: 0.1875rem;
+    padding: 0.65rem 1.5rem;
     /* border: 0.0625rem solid #aaaaaa; */
     /* box-shadow: 0rem 0rem 0.1875rem 0.125rem rgba(0, 0, 0, 0.25); */
     margin-bottom: 1rem;
@@ -40,28 +42,35 @@ export const TableContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     button {
-      background-color: #fff;
       outline: 0;
       border: 0.0625rem solid rgba(0, 0, 0, 0.23);
       border-radius: 0.1875rem;
       font-weight: 400;
       padding: 0.375rem;
       font-size: 0.875rem;
-      color: #000000;
+      color: #a9a9a9;
       margin-right: 0.25rem;
 
+      color: #a9a9a9;
+      background: #1f0b16;
+
       :disabled {
-        color: #c0b9b9;
-        background: #c0b9b921;
+        opacity: 0.7;
       }
     }
   }
   .page-text {
     font-size: 0.875rem;
+    color: #a9a9a9;
   }
   .page-count-select > div {
     padding: 0.25rem;
     font-size: 0.875rem;
+    background: #1f0b16;
+    color: #a9a9a9;
+    border: 1px solid #2e1322 !important;
+    outline: 1px solid #2e1322 !important;
   }
 `;

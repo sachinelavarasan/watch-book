@@ -10,6 +10,7 @@ export const employees = [
     dob: '25/01/1993',
     salary: 1.0,
     address: 'Address1',
+    status: 1,
   },
   {
     id: 1002,
@@ -22,6 +23,7 @@ export const employees = [
     dob: '05/12/1944',
     salary: 2.0,
     address: 'Address2',
+    status: 1,
   },
   {
     id: 1003,
@@ -34,6 +36,7 @@ export const employees = [
     dob: '05/03/1939',
     salary: 3.0,
     address: 'Address3',
+    status: 1,
   },
   {
     id: 1004,
@@ -46,6 +49,7 @@ export const employees = [
     dob: '03/05/2001',
     salary: 4.0,
     address: 'Address4',
+    status: 3,
   },
   {
     id: 1005,
@@ -58,6 +62,7 @@ export const employees = [
     dob: '29/07/1992',
     salary: 5.0,
     address: 'Address5',
+    status: 3,
   },
   {
     id: 1006,
@@ -70,6 +75,7 @@ export const employees = [
     dob: '30/12/1940',
     salary: 6.0,
     address: 'Address6',
+    status: 3,
   },
   {
     id: 1007,
@@ -82,6 +88,7 @@ export const employees = [
     dob: '22/05/1936',
     salary: 7.0,
     address: 'Address7',
+    status: 2,
   },
   {
     id: 1008,
@@ -94,6 +101,7 @@ export const employees = [
     dob: '18/12/1948',
     salary: 8.0,
     address: 'Address8',
+    status: 2,
   },
   {
     id: 1009,
@@ -106,6 +114,7 @@ export const employees = [
     dob: '09/10/1939',
     salary: 9.0,
     address: 'Address9',
+    status: 3,
   },
   {
     id: 1010,
@@ -118,5 +127,6 @@ export const employees = [
     dob: '15/03/1964',
     salary: 10.0,
     address: 'Address10',
+    status: 2,
   },
 ];
