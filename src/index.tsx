@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
 import './index.css';
 import Routers from './Routes';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
+import ThemeProvider from './utils/ThemeProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Routers />
+      <ThemeProvider>
+        <Routers />
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>,
 );

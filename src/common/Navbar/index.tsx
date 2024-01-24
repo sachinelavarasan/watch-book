@@ -19,8 +19,12 @@ import WatchBookLogo from '../../assets/watchbook_logo.svg';
 
 import { NavbarContainer } from './elements';
 import { Icon, ProfileDropdown } from './components';
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { authSelector, setTheme } from '../../redux/slices/authSlice';
 
 function Navbar() {
+  const dispatch = useAppDispatch();
+  const { theme } = useAppSelector(authSelector);
   return (
     <NavbarContainer>
       <List>
@@ -72,6 +76,9 @@ function Navbar() {
           />
         </ListItem>
       </List>
+      <button type="button" onClick={() => dispatch(setTheme(theme == 'dark' ? 'light' : 'dark'))}>
+        switch
+      </button>
       <ProfileDropdown />
     </NavbarContainer>
   );

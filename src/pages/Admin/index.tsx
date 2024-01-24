@@ -3,12 +3,13 @@ import '../../App.css';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from '../../common/Navbar';
 import { Dashboard, Employees } from './pages';
+import { useTheme } from '@emotion/react';
 
 export const AdminRoutes = () => {
+  const theme: any = useTheme();
   return (
-    <div className="app-main-container">
+    <div className="app-main-container" style={theme.appMainContainer}>
       <Navbar />
-
       <div className="component">
         <Routes>
           <Route path="/" element={<Dashboard />} />

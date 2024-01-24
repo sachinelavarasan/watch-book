@@ -6,11 +6,13 @@ interface authState {
   error: null;
   isLoading: boolean;
   user: any;
+  theme: string;
 }
 const initialState: authState = {
   error: null,
   isLoading: false,
   user: null,
+  theme: 'light',
 };
 
 const authSlice = createSlice({
@@ -29,10 +31,13 @@ const authSlice = createSlice({
     setUser(state, action) {
       state.user = action.payload;
     },
+    setTheme(state, action) {
+      state.theme = action.payload;
+    },
   },
 });
 
-export const { clearUser, setError, setIsLoading, setUser } = authSlice.actions;
+export const { clearUser, setError, setIsLoading, setUser, setTheme } = authSlice.actions;
 
 export const logIn = (data: any, callback: Function) => async (dispatch: any) => {
   try {
@@ -128,6 +133,6 @@ export const editProfile = (data: any, callback: Function) => async (dispatch: a
   }
 };
 
-export const authSelector = (state: { auth: any }) => state.auth;
+export const authSelector = (state: { auth: authState }) => state.auth;
 
 export const authReducer = authSlice.reducer;
