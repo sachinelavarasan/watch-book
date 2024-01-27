@@ -5,6 +5,7 @@ export const socket = new Manager(process.env.REACT_APP_API_URL || '', {
     authorization: 'Bearer ' + localStorage.getItem('jwtToken'),
   },
   autoConnect: false,
+  transports: ['polling', 'websocket']
 });
 
 export const socketEvents = socket.socket('/events');
