@@ -21,6 +21,7 @@ import { NavbarContainer } from './elements';
 import { Icon, ProfileDropdown } from './components';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { authSelector, setTheme } from '../../redux/slices/authSlice';
+import { socketEvents } from '../../utils/socket';
 
 function Navbar() {
   const dispatch = useAppDispatch();
@@ -79,9 +80,8 @@ function Navbar() {
       <button
         type="button"
         onClick={() => {
-          // const theme = localStorage.getItem('theme');
-          // localStorage.setItem('theme', theme == 'dark' ? 'light' : 'dark');
           dispatch(setTheme(theme == 'dark' ? 'light' : 'dark'));
+          socketEvents.emit('sendThemeChange', { theme: theme == 'dark' ? 'light' : 'dark' });
         }}>
         switch
       </button>

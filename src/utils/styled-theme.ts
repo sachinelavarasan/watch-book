@@ -116,6 +116,9 @@ const lightTheme: ThemesProps = {
   authFormBg: {
     backgroundColor: '#fff',
   },
+  palette: {
+    mode: 'light',
+  },
   custom: {
     backgroundColor: '#f5f5f5',
     color: '#000',

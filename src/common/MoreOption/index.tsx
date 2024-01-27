@@ -6,6 +6,7 @@ import Menu from '@mui/material/Menu';
 import { BsThreeDots } from 'react-icons/bs';
 
 import { MenuContainer, DropdownContainer } from './elements';
+import { useTheme } from '@emotion/react';
 
 const ITEM_HEIGHT = 48;
 
@@ -15,6 +16,7 @@ const MoreOption = ({ children }: any) => {
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
+  const theme: any = useTheme();
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -46,8 +48,8 @@ const MoreOption = ({ children }: any) => {
         PaperProps={{
           style: {
             maxHeight: ITEM_HEIGHT * 4.5,
-            minWidth: '6.5rem',
-            // backgroundColor: '',
+            minWidth: '7rem',
+            backgroundColor: theme.custom.backgroundColor,
             marginTop: '0.4rem',
           },
         }}>

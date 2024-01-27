@@ -76,7 +76,7 @@ export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
                 alert('hello');
               }}
               isDelete={true}
-              startIcon={<RiDeleteBin6Line color="#fc3434" className="dropdown-icon" />}
+              startIcon={<RiDeleteBin6Line color="#fff" className="dropdown-icon" />}
             />
           </MoreOption>
         ),
@@ -87,9 +87,9 @@ export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
   );
 
   let arr = [
-    { label: 'hj', value: 'dd' },
-    { label: 'hj', value: 'dd' },
-    { label: 'hj', value: 'dd' },
+    { label: 'hj1', value: 'dd1' },
+    { label: 'hj2', value: 'dd2' },
+    { label: 'hj3', value: 'dd3' },
   ];
 
   return (
@@ -99,7 +99,7 @@ export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
       </div>
       <div className="list-container" style={theme.tableStyle}>
         <div className="flex justify-between items-center mb-4">
-          {/* <SelectField
+          <SelectField
             id="select"
             label="Select"
             options={arr}
@@ -109,7 +109,8 @@ export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
             placeholder="select"
             flexType="row"
             isLabel={false}
-          /> */}
+            value={arr[0]}
+          />
           <Button
             style={{ height: 'min-content', marginLeft: 'auto' }}
             labelStyle={{ color: 'white', textTransform: 'Capitalize' }}

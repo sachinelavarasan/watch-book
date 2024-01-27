@@ -14,14 +14,14 @@ export const DropdownOptionContainer = styled(Button)`
     background-color: #1a0131;
   }
   &.is-delete {
-    background-color: #ffffff;
+    background-color: #f71c1c;
 
     .label {
       color: #1a0131;
     }
   }
   &.is-disabled {
-    background-color: #e5b6ff;
+    background-color: #dcd9dd;
     cursor: not-allowed;
     .label {
       color: #8a8a8a;
