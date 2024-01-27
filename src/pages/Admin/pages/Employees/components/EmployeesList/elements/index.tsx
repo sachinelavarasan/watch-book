@@ -8,7 +8,6 @@ export const EmployeesListContainer = styled.div`
   }
   .list-container {
     margin-top: 1.5rem;
-    background: #1a000e;
     padding: 1.5rem;
     border-radius: 0.5rem;
   }

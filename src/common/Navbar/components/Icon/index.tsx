@@ -13,7 +13,7 @@ export const Icon = ({ route, activeIcon, inActiveIcon, toolTipTitle }: any) => 
           <div className="icon-container">
             <IconContext.Provider
               value={{
-                size: '1.7rem',
+                size: '1.5rem',
                 className: 'activeState',
               }}>
               {match ? activeIcon : inActiveIcon}

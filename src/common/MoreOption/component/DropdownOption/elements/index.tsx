@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import Button from '@mui/material/Button';
 
 export const DropdownOptionContainer = styled(Button)`
-  background-color: #9000b9;
+  background-color: #1a0131;
   .label {
     width: 100%;
     text-align: left;
@@ -11,17 +11,17 @@ export const DropdownOptionContainer = styled(Button)`
     font-size: 0.875rem;
   }
   :hover {
-    background-color: #9000b9;
+    background-color: #1a0131;
   }
   &.is-delete {
-    background-color: #ffffff;
+    background-color: #f71c1c;
 
     .label {
-      color: #9000db;
+      color: #1a0131;
     }
   }
   &.is-disabled {
-    background-color: #e5b6ff;
+    background-color: #dcd9dd;
     cursor: not-allowed;
     .label {
       color: #8a8a8a;

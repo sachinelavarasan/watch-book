@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { forwardRef, useState } from 'react';
+import { useTheme } from '@emotion/react';
 import { IconButton, InputAdornment, OutlinedInput, OutlinedInputProps } from '@mui/material';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 
@@ -18,6 +19,7 @@ type InputRef = HTMLInputElement;
 
 export const TextInput = forwardRef<InputRef, InputFieldProps>(
   ({ id, label, error, isPassword = false, errorMessage, borderColor, ...props }, ref) => {
+    const theme: any = useTheme();
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -25,7 +27,8 @@ export const TextInput = forwardRef<InputRef, InputFieldProps>(
       <div className="flex flex-col relative">
         <label
           htmlFor="outlined-adornment-password"
-          className="self-start mb-1 font-semibold text-sm ">
+          className="self-start mb-1 font-semibold text-sm "
+          style={theme.labelStyle}>
           {label}
         </label>
 
@@ -38,7 +41,11 @@ export const TextInput = forwardRef<InputRef, InputFieldProps>(
           error={error}
           sx={{
             fieldSet: {
-              borderColor: borderColor ? borderColor : '#9000db',
+              borderColor: borderColor ? borderColor : theme.fieldsBorder.borderColor,
+              '&:hover': {
+                borderColor: '#560432 !important',
+                boxShadow: '0 0 0.25rem #560432 !important',
+              },
             },
           }}
           inputProps={{

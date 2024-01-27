@@ -1,3 +1,4 @@
+import { useTheme } from '@emotion/react';
 import { StatusContainer } from './elements';
 
 interface StatusProps {
@@ -6,8 +7,9 @@ interface StatusProps {
 }
 
 export const Status = ({ statusValue, statusLabel }: StatusProps) => {
+  const theme: any = useTheme();
   return (
-    <StatusContainer>
+    <StatusContainer style={theme.employeeStatusbtn}>
       <div className={`status-${statusValue}`} />
       <div className={`label-${statusValue} ml-2`}>{statusLabel}</div>
     </StatusContainer>

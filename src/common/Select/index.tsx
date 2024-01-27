@@ -5,14 +5,32 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import styled from '@emotion/styled';
 import { SelectInputProps } from '@mui/material/Select/SelectInput';
+import { useTheme } from '@emotion/react';
+import { makeStyles } from 'tss-react/mui';
+
+const useStyles = makeStyles()((theme: any) => ({
+  select: {
+    width: '100%',
+    '& .MuiSelect-iconOutlined': {
+      // Adjust the styles for the dropdown icon as needed
+      marginRight: theme.spacing(1),
+    },
+    '& .MuiSelect-selectMenu': {
+      // Adjust the styles for the select menu as needed
+      overflowY: 'auto', // Ensure vertical scrollbar is visible
+      minHeight: '50px',
+    },
+  },
+}));
 
 const SelectContainer = styled.div`
   fieldset {
-    border-color: #8a8686 !important;
+    border-color: ${({ theme }: any) => theme.custom.backgroundColor} !important;
     border-width: 0.0625rem !important;
   }
   .MuiOutlinedInput-input {
     padding: 0.375rem 1rem;
+    border-radius: 0.25rem;
   }
   .select {
     border-radius: 0.25rem;
@@ -29,7 +47,7 @@ interface SelectProps {
   label: string;
   error?: boolean;
   errorMessage?: string | undefined;
-  options: any;
+  options: { label: string; value: string }[];
   placeholder: string;
   flexType?: string;
   isLabel?: boolean;
@@ -40,6 +58,9 @@ type SelectRef = HTMLSelectElement;
 
 export const SelectField = React.forwardRef<SelectRef, selectFieldProps>(
   ({ id, label, error, errorMessage, options, placeholder, flexType, isLabel, ...props }, ref) => {
+    const theme: any = useTheme();
+    const { classes } = useStyles();
+
     return (
       <SelectContainer>
         <Box
@@ -49,6 +70,7 @@ export const SelectField = React.forwardRef<SelectRef, selectFieldProps>(
             flexDirection: flexType ? flexType : 'column',
             position: 'relative',
             alignItems: 'center',
+            // backgroundColor: theme.custom.backgroundColor,
           }}>
           {isLabel ? (
             <label htmlFor="outlined-adornment-password" className="mb-1 font-semibold text-sm ">
@@ -63,10 +85,23 @@ export const SelectField = React.forwardRef<SelectRef, selectFieldProps>(
             multiple={false}
             native={false}
             id={id}
-            className="select">
-            <MenuItem disabled value="">
-              {placeholder}
-            </MenuItem>
+            inputProps={{
+              sx: {
+                backgroundColor: theme.custom.backgroundColor,
+              },
+              MenuProps: {
+                MenuListProps: {
+                  sx: {
+                    backgroundColor: theme.custom.backgroundColor,
+                  },
+                },
+              },
+            }}
+            className={classes.select}
+            displayEmpty
+            renderValue={(value: any) =>
+              value != undefined ? value.label : <span>{placeholder}</span>
+            }>
             {options.map((opt: any) => {
               return (
                 <MenuItem value={opt.value} key={opt.value}>

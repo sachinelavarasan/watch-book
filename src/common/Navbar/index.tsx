@@ -15,12 +15,13 @@ import { HiUserGroup } from 'react-icons/hi2';
 import { RiTimeFill } from 'react-icons/ri';
 import { FaCalendar } from 'react-icons/fa';
 
-import WatchBookLogo from '../../assets/watchbook_logo.svg';
+import WatchBookLogo from '../../assets/images/watchbook-logo-light.png';
 
 import { NavbarContainer } from './elements';
 import { Icon, ProfileDropdown } from './components';
 import { useAppDispatch, useAppSelector } from '../../redux/store';
 import { authSelector, setTheme } from '../../redux/slices/authSlice';
+import { socketEvents } from '../../utils/socket';
 
 function Navbar() {
   const dispatch = useAppDispatch();
@@ -76,7 +77,12 @@ function Navbar() {
           />
         </ListItem>
       </List>
-      <button type="button" onClick={() => dispatch(setTheme(theme == 'dark' ? 'light' : 'dark'))}>
+      <button
+        type="button"
+        onClick={() => {
+          dispatch(setTheme(theme == 'dark' ? 'light' : 'dark'));
+          socketEvents.emit('sendThemeChange', { theme: theme == 'dark' ? 'light' : 'dark' });
+        }}>
         switch
       </button>
       <ProfileDropdown />

@@ -3,6 +3,7 @@ import React from 'react';
 import { EmployeesContainer } from './elements';
 import { AddEmployee } from './components/AddEmployee';
 import { EmployeesList } from './components/EmployeesList';
+import { useTheme } from '@emotion/react';
 
 export const Employees = () => {
   const [open, setOpen] = React.useState(false);

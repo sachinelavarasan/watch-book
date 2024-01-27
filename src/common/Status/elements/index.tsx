@@ -6,7 +6,7 @@ export const StatusContainer = styled.div`
   padding: 0.25rem 0.5rem;
   border-radius: 4rem;
   width: fit-content;
-  background: rgb(199 199 199 / 5%);
+  /* background: rgb(199 199 199 / 5%); */
 
   [class*='status'] {
     background-color: #fff;

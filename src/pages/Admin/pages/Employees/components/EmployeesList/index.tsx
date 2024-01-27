@@ -15,8 +15,10 @@ import SkeletonLoader from '../../../../../../common/SkeletonLoader';
 import { useAppDispatch, useAppSelector } from '../../../../../../redux/store';
 import { getEmployees } from '../../../../../../redux/slices/employeesSlice';
 import { EmployeesListContainer } from './elements';
+import { useTheme } from '@emotion/react';
 
 export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
+  const theme: any = useTheme();
   const { employees, isLoading } = useAppSelector((state) => state.employees);
   const dispatch = useAppDispatch();
 
@@ -74,7 +76,7 @@ export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
                 alert('hello');
               }}
               isDelete={true}
-              startIcon={<RiDeleteBin6Line color="#fc3434" className="dropdown-icon" />}
+              startIcon={<RiDeleteBin6Line color="#fff" className="dropdown-icon" />}
             />
           </MoreOption>
         ),
@@ -85,15 +87,17 @@ export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
   );
 
   let arr = [
-    { label: 'hj', value: 'dd' },
-    { label: 'hj', value: 'dd' },
-    { label: 'hj', value: 'dd' },
+    { label: 'hj1', value: 'dd1' },
+    { label: 'hj2', value: 'dd2' },
+    { label: 'hj3', value: 'dd3' },
   ];
 
   return (
     <EmployeesListContainer>
-      <div className="component-title">Employees</div>
-      <div className="list-container">
+      <div className="component-title" style={theme.componentTitle}>
+        Employees
+      </div>
+      <div className="list-container" style={theme.tableStyle}>
         <div className="flex justify-between items-center mb-4">
           <SelectField
             id="select"
@@ -105,9 +109,10 @@ export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
             placeholder="select"
             flexType="row"
             isLabel={false}
+            value={arr[0]}
           />
           <Button
-            style={{ backgroundColor: '#9000B9', height: 'min-content' }}
+            style={{ height: 'min-content', marginLeft: 'auto' }}
             labelStyle={{ color: 'white', textTransform: 'Capitalize' }}
             label="Add Employee"
             size="small"

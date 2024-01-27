@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
 export const NavbarContainer = styled.div`
-  background-color: #1a000e;
+  background-color: #2c183d;
   align-items: center;
-  border-right: 1px solid #3b0020;
+  border-right: 1px solid #27103a;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
