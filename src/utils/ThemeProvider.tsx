@@ -10,6 +10,8 @@ import { CssBaseline } from '@mui/material';
 
 const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const currentTheme = useAppSelector(authSelector);
+  // const theme = localStorage.getItem('theme');
+  // console.log(theme);
   return (
     // <MuiThemeProvider theme={theme}>
     <EmotionThemeProvider

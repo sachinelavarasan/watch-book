@@ -47,7 +47,7 @@ const MoreOption = ({ children }: any) => {
           style: {
             maxHeight: ITEM_HEIGHT * 4.5,
             minWidth: '6.5rem',
-            backgroundColor: '#DFDFDF',
+            // backgroundColor: '',
             marginTop: '0.4rem',
           },
         }}>

@@ -88,7 +88,7 @@ export const ProfileDropdown = () => {
         transformOrigin={{ horizontal: 'left', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}>
         <MenuItem onClick={handleClose} className="font-bold">
-          {user?.oga_name}
+          {user?.org_name}
         </MenuItem>
         <Divider />
         <MenuItem onClick={modalOpen}>

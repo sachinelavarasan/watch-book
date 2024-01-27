@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
-import '../../App.css';
+import { useTheme } from '@emotion/react';
+
+// import '../../App.css';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from '../../common/Navbar';
 import { Dashboard, Employees } from './pages';
-import { useTheme } from '@emotion/react';
 
 export const AdminRoutes = () => {
   const theme: any = useTheme();

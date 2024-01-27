@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTheme } from '@emotion/react';
 
 import LoadingButton from '@mui/lab/LoadingButton';
 
@@ -31,6 +32,7 @@ const Button = ({
   isLoading,
   labelStyle,
 }: ButtonProps) => {
+  const theme: any = useTheme();
   return (
     <LoadingButton
       loading={isLoading}
@@ -41,7 +43,7 @@ const Button = ({
       onClick={onClick}
       size={size}
       startIcon={startIcon}
-      style={style}
+      style={{ ...theme.buttonStyle, ...style }}
       endIcon={endIcon}>
       <span style={{ ...labelStyle, textTransform: 'Capitalize' }}>{label}</span>
     </LoadingButton>

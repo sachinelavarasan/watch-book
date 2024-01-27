@@ -6,10 +6,10 @@ export const IconContainer = styled.div`
       border-radius: 0.5em;
       /* border: 1px solid #475be8; */
       /* box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25), -2px -2px 4px rgba(255, 255, 255, 0.3); */
-      background: #ffffff;
+      background: #583376;
     }
     .activeState {
-      color: #2a0017;
+      color: #fff;
     }
   }
   .inactive {

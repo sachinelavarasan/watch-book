@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import './App.css';
+import { useTheme } from '@emotion/react';
+// import './App.css';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { SignUp, Login } from './pages/Auth';
@@ -8,8 +9,9 @@ import { LoginRoute, PrivateRoute } from './privateRoute';
 import { AdminRoutes } from './pages/Admin';
 
 function Routers() {
+  const theme: any = useTheme();
   return (
-    <div className="App">
+    <div className="App" style={theme.appMainContainer}>
       <BrowserRouter>
         <Routes>
           <Route

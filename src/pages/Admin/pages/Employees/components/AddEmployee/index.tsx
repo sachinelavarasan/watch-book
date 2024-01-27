@@ -105,7 +105,6 @@ export const AddEmployee = ({ handleOpen, open }: AddEmployeeProps) => {
 
           <div className="ml-2">
             <Button
-              style={{ backgroundColor: '#9000B9' }}
               labelStyle={{ color: 'white' }}
               label="Add Employee"
               size="small"

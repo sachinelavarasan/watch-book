@@ -15,8 +15,10 @@ import SkeletonLoader from '../../../../../../common/SkeletonLoader';
 import { useAppDispatch, useAppSelector } from '../../../../../../redux/store';
 import { getEmployees } from '../../../../../../redux/slices/employeesSlice';
 import { EmployeesListContainer } from './elements';
+import { useTheme } from '@emotion/react';
 
 export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
+  const theme: any = useTheme();
   const { employees, isLoading } = useAppSelector((state) => state.employees);
   const dispatch = useAppDispatch();
 
@@ -92,10 +94,12 @@ export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
 
   return (
     <EmployeesListContainer>
-      <div className="component-title">Employees</div>
-      <div className="list-container">
+      <div className="component-title" style={theme.componentTitle}>
+        Employees
+      </div>
+      <div className="list-container" style={theme.tableStyle}>
         <div className="flex justify-between items-center mb-4">
-          <SelectField
+          {/* <SelectField
             id="select"
             label="Select"
             options={arr}
@@ -105,9 +109,9 @@ export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
             placeholder="select"
             flexType="row"
             isLabel={false}
-          />
+          /> */}
           <Button
-            style={{ backgroundColor: '#9000B9', height: 'min-content' }}
+            style={{ height: 'min-content', marginLeft: 'auto' }}
             labelStyle={{ color: 'white', textTransform: 'Capitalize' }}
             label="Add Employee"
             size="small"

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useTheme } from '@emotion/react';
 // import LoadingButton from '@mui/lab/LoadingButton';
 import { Link, Snackbar } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
@@ -12,11 +13,14 @@ import { logIn, setError } from '../../../redux/slices/authSlice';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../../common/Button';
 
+import { LoginContainer } from './elements';
+
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 export const Login = () => {
+  const theme: any = useTheme();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { isLoading, error } = useAppSelector((state) => state.auth);
@@ -43,9 +47,15 @@ export const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
-      <div className="flex flex-col p-5 rounded-lg shadow-[0px_2px_6px_2px_rgba(0,0,0,0.3)]">
-        <h2 className="m-0 pb-3 self-center">Login</h2>
+    <LoginContainer
+      className="flex items-center justify-center h-screen w-full"
+      style={theme.appMainContainer}>
+      <div
+        className="login-form-container flex flex-col p-5 rounded-lg shadow-[0px_2px_6px_2px_rgba(0,0,0,0.3)]"
+        style={theme.authFormBg}>
+        <div className="title m-0 pb-3 self-center" style={theme.conponentTilte}>
+          Login
+        </div>
         <div>
           <Controller
             control={control}
@@ -94,7 +104,6 @@ export const Login = () => {
             isDisabled={!isValid}
             label="Login"
             labelStyle={{ color: 'white' }}
-            style={{ backgroundColor: '#9000b9', color: 'white' }}
           />
         </div>
         <div className="mt-3 flex justify-center font-semibold text-sm">
@@ -102,7 +111,7 @@ export const Login = () => {
             href="/signup"
             underline="hover"
             className="hover:bg-slate-200 p-1 rounded"
-            sx={{ color: '#9000b9' }}>
+            sx={theme.authLinkStyle}>
             Register
           </Link>
         </div>
@@ -112,6 +121,6 @@ export const Login = () => {
           </Alert>
         </Snackbar>
       </div>
-    </div>
+    </LoginContainer>
   );
 };
