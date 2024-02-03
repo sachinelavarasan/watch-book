@@ -4,9 +4,7 @@ export const IconContainer = styled.div`
   .active {
     .icon-container {
       border-radius: 0.5em;
-      /* border: 1px solid #475be8; */
-      /* box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25), -2px -2px 4px rgba(255, 255, 255, 0.3); */
-      background: #583376;
+      background: ${({ theme }: any) => theme.sideNavbarStyle.iconContainerActive.backgroundColor};
     }
     .activeState {
       color: #fff;
@@ -16,7 +14,7 @@ export const IconContainer = styled.div`
     .icon-container {
     }
     .activeState {
-      color: white;
+      color: ${({ theme }: any) => theme.sideNavbarStyle.iconStyle.color};
     }
   }
   .icon-container {

@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
 export const NavbarContainer = styled.div`
-  background-color: #2c183d;
+  background-color: ${({ theme }: any) => theme.sideNavbarStyle.backgroundColor};
   align-items: center;
-  border-right: 1px solid #27103a;
+  border-right: 1px solid ${({ theme }: any) => theme.sideNavbarStyle.borderRightColor} !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,8 +16,8 @@ export const NavbarContainer = styled.div`
     text-decoration: none;
   }
   .avatar-icon {
-    box-shadow: 2px 2px 4px rgba(65, 65, 65, 0.25), -2px -2px 3px rgba(168, 168, 168, 0.8);
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1));
+    /* box-shadow: 2px 2px 4px rgba(65, 65, 65, 0.25), -2px -2px 3px rgba(168, 168, 168, 0.8);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1)); */
     width: 2.1rem;
     height: 2.1rem;
   }

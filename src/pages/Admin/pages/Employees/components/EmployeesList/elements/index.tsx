@@ -5,9 +5,9 @@ export const EmployeesListContainer = styled.div`
   .component-title {
     font-size: 2rem;
     font-weight: 700;
+    padding: 0 1.5rem;
   }
   .list-container {
-    margin-top: 1.5rem;
     padding: 1.5rem;
     border-radius: 0.5rem;
   }
