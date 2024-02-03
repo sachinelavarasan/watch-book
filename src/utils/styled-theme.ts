@@ -43,9 +43,10 @@ export interface ThemesProps extends ThemeOptions {
     color: string;
   };
   tableBodyRowStyle?: {
-    backgroundColor: string;
+    backgroundColor?: string;
     outlineColor: string;
     color: string;
+    hoverBackgroundColor?: string;
   };
   employeeStatusbtn?: {
     backgroundColor: string;
@@ -57,6 +58,26 @@ export interface ThemesProps extends ThemeOptions {
     backgroundColor: string;
     borderColor: string;
     color: string;
+  };
+  selectInputStyle: {
+    backgroundColor: string;
+    borderColor: string;
+    inputStyle: {
+      color: string;
+    };
+    list: {
+      color: string;
+    };
+  };
+  sideNavbarStyle: {
+    backgroundColor: string;
+    borderRightColor: string;
+    iconContainerActive?: {
+      backgroundColor?: string;
+    };
+    iconStyle: {
+      color: string;
+    };
   };
 }
 
@@ -70,8 +91,8 @@ const darkTheme: ThemesProps = {
     color: '#fff',
   },
   buttonStyle: {
-    backgroundColor: '#1a0131',
-    color: '#fff',
+    backgroundColor: '#e8e9f3',
+    color: '#0c0116',
   },
   authLinkStyle: {
     color: '#fff',
@@ -89,14 +110,15 @@ const darkTheme: ThemesProps = {
     backgroundColor: '#2c183d',
   },
   tableHeadStyle: {
-    backgroundColor: '#1b0f26',
+    backgroundColor: 'rgb(56 36 73)',
     outlineColor: '#190d24',
     color: '#fff',
   },
   tableBodyRowStyle: {
-    backgroundColor: '#21122f',
+    // backgroundColor: '#21122f',
     outlineColor: '#1b0f26',
     color: '#f3f3f3',
+    hoverBackgroundColor: '#4c346233',
   },
   employeeStatusbtn: {
     backgroundColor: '#c7c7c70d',
@@ -109,10 +131,30 @@ const darkTheme: ThemesProps = {
     borderColor: '#190d24',
     color: '#a9a9a9',
   },
+  selectInputStyle: {
+    backgroundColor: 'rgb(27, 15, 38)',
+    borderColor: '#3f2e4e',
+    inputStyle: {
+      color: '#a9a9a9',
+    },
+    list: {
+      color: '#fff',
+    },
+  },
+  sideNavbarStyle: {
+    backgroundColor: '#0c0016',
+    borderRightColor: '#27103a',
+    iconContainerActive: {
+      backgroundColor: 'rgb(56 36 73)',
+    },
+    iconStyle: {
+      color: '#fff',
+    },
+  },
 };
 
 const lightTheme: ThemesProps = {
-  appMainContainer: { backgroundColor: '#f5f5f5' },
+  appMainContainer: { backgroundColor: 'rgba(228 197 255 / 11%)' },
   authFormBg: {
     backgroundColor: '#fff',
   },
@@ -124,8 +166,8 @@ const lightTheme: ThemesProps = {
     color: '#000',
   },
   buttonStyle: {
-    backgroundColor: '#1a0131',
-    color: '#fff',
+    backgroundColor: 'rgb(56 36 73)',
+    color: '#e8e9f3',
   },
   authLinkStyle: {
     color: '#1a0131',
@@ -143,14 +185,15 @@ const lightTheme: ThemesProps = {
     backgroundColor: '#ffffff',
   },
   tableHeadStyle: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#fff',
     outlineColor: '#f5f5f5',
     color: '#000',
   },
   tableBodyRowStyle: {
-    backgroundColor: 'rgb(255, 255, 255)',
+    backgroundColor: 'transparent',
     outlineColor: 'rgb(217, 216, 216)',
     color: '#0e0e0e',
+    hoverBackgroundColor: 'rgb(56 36 73 / 4%)',
   },
   employeeStatusbtn: {
     backgroundColor: '#f6f6f6',
@@ -162,6 +205,26 @@ const lightTheme: ThemesProps = {
     backgroundColor: 'rgb(255, 255, 255)',
     borderColor: 'rgb(217, 216, 216)',
     color: '#a9a9a9',
+  },
+  selectInputStyle: {
+    backgroundColor: 'rgb(255, 255, 255)',
+    borderColor: 'rgb(217, 216, 216)',
+    inputStyle: {
+      color: '#a9a9a9',
+    },
+    list: {
+      color: '#000',
+    },
+  },
+  sideNavbarStyle: {
+    backgroundColor: '#fff',
+    borderRightColor: '#ddd',
+    iconContainerActive: {
+      backgroundColor: 'rgb(56 36 73)',
+    },
+    iconStyle: {
+      color: 'rgb(56 36 73)',
+    },
   },
 };
 

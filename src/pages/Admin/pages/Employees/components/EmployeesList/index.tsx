@@ -97,7 +97,7 @@ export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
       <div className="component-title" style={theme.componentTitle}>
         Employees
       </div>
-      <div className="list-container" style={theme.tableStyle}>
+      <div className="list-container">
         <div className="flex justify-between items-center mb-4">
           <SelectField
             id="select"
@@ -113,7 +113,7 @@ export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
           />
           <Button
             style={{ height: 'min-content', marginLeft: 'auto' }}
-            labelStyle={{ color: 'white', textTransform: 'Capitalize' }}
+            labelStyle={{ color: theme.buttonStyle.color, textTransform: 'Capitalize' }}
             label="Add Employee"
             size="small"
             variant="contained"
@@ -122,7 +122,7 @@ export const EmployeesList = ({ handleOpen }: { handleOpen: () => void }) => {
           />
         </div>
 
-        {employees.length && !isLoading && <Table columns={columns} data={employees} />}
+        {employees.length > 0 && !isLoading && <Table columns={columns} data={employees} />}
         {isLoading && <SkeletonLoader height={400} />}
         {!employees.length && !isLoading && (
           <Empty
